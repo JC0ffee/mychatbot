@@ -1,0 +1,167 @@
+{
+    "intents": [
+        {
+            "tag": "mite",
+            "patterns": ["mite", "Mite", "Cerita Mite", "Dongeng Mite", "Ada cerita dewa-dewa?", "Ceritakan tentang dewa-dewa"],
+            "responses": [
+                "Cerita mite adalah dongeng yang bercerita tentang dewa-dewa, peri, dan segala sesuatu yang dianggap sederajat dengan dewa. Misalnya, cerita tentang datangnya padi ke Jawa."
+            ]
+        },
+        {
+            "tag": "legenda",
+            "patterns": ["Legenda", "Cerita Legenda", "Dongeng Legenda", "Cerita tentang tempat keramat", "Ceritakan tentang Malin Kundang"],
+            "responses": [
+                "Cerita legenda merupakan dongeng tentang terjadinya suatu tempat yang dihubungkan dengan kesaktian. Contoh cerita seperti Gunung Tangkuban Perahu dan kisah Banyuwangi termasuk dalam jenis ini."
+            ]
+        },
+        {
+            "tag": "sage",
+            "patterns": ["Sage", "Cerita Sage", "Dongeng Sage", "Cerita sejarah Jawa", "Ceritakan tentang Singosari"],
+            "responses": [
+                "Sage adalah dongeng yang berhubungan dengan sejarah, tokoh dalam sage seringkali menjadi tokoh dalam sejarah. Contoh cerita berdirinya kerajaan Samodra dan awal mula Singosari termasuk dalam jenis ini."
+            ]
+        },
+        {
+            "tag": "fabel",
+            "patterns": ["Fabel", "Cerita Fabel", "Dongeng Fabel", "Cerita tentang binatang cerdik", "Ceritakan tentang Si Kancil"],
+            "responses": [
+                "Fabel adalah dongeng tentang binatang, tumbuhan-tumbuhan, dan benda-benda lain yang dapat berbicara dan berbuat seperti manusia. Contoh cerita seperti Si Kancil dan Buaya serta Burung Gagak dan Burung Hantu termasuk dalam jenis ini."
+            ]
+        },
+        {
+            "tag": "jenaka",
+            "patterns": ["Jenaka", "Cerita Jenaka", "Dongeng Jenaka", "Cerita humor Indonesia", "Ceritakan tentang Pak Pandir"],
+            "responses": [
+                "Dongeng jenaka atau cerita pelipur lara adalah kisah humor bangsa Indonesia. Contoh cerita seperti Pak Pandir, Pak Kodok, dan Lebai Malang termasuk dalam jenis ini."
+            ]
+        },
+        {
+            "tag": "parabel",
+            "patterns": ["Parabel", "Cerita Parabel", "Dongeng Parabel", "Cerita dengan pesan moral", "Ceritakan tentang Si Kerudung Merah"],
+            "responses": [
+                "Dongeng parabel merupakan jenis dongeng yang dalam ceritanya tersirat nilai-nilai pendidikan, baik itu pendidikan agama, moral, atau pendidikan secara umum. Contoh cerita seperti Si Kerudung Merah, Hikayat Bayan Budiman, Malin Kundang, dan sebagainya termasuk dalam jenis ini."
+            ]
+        },
+        {
+            "tag": "dongeng_biasa",
+            "patterns": ["Dongeng Biasa", "Cerita Biasa", "Dongeng Umum", "Cerita yang sering diceritakan", "Ceritakan tentang Cinderella"],
+            "responses": [
+                "Selain dari jenis-jenis dongeng di atas, terdapat juga jenis dongeng biasa dan sangat umum diceritakan. Contoh seperti Bawang Putih dan Bawang Merah, Cinderella, Putri Tidur, dan sebagainya termasuk dalam jenis ini."
+            ]
+        },
+        {
+            "tag": "greeting",
+            "patterns": ["Hi", "Hai", "Hallo", "Halo", "Selamat pagi", "Selamat siang", "Selamat sore", "Selamat malam"],
+            "responses": [
+                "Hai, apakah kamu membutuhkan saranku?",
+                "Halo juga, senang bertemu denganmu!",
+                "Halo, bagaimana kabarmu?",
+                "Hi, senang bertemu denganmu!"
+            ]
+        },
+        {
+            "tag": "baik",
+            "patterns": ["Baik", "Saya baik", "Kabar saya baik", "Saya sangat baik", "Keadaannya baik"],
+            "responses": [
+                "Luar biasa!"
+            ]
+        },
+        {
+            "tag": "ask_how_are_you",
+            "patterns": ["Apa kabar?", "Bagaimana kabarmu?", "Kabar baik?", "Bagaimana keadaanmu?", "Kamu apa kabar?"],
+            "responses": [
+                "Saya baik, terima kasih telah bertanya!",
+                "Saya sedang menjalankan tugas saya dengan baik"
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": ["Terimakasih", "Makasih", "Thx", "Terima kasih", "Thank you", "Thanks", "Makasih banyak", "Terimakasih banyak"],
+            "responses": [
+                "Terimakasih Kembali!",
+                "Bukan masalah!",
+                "Dengan senang hati!"
+            ]
+        },
+        {
+            "tag": "recommendation",
+            "patterns": ["Minta saran cerita", "Beri saya saran cerita", "Rekomendasikan cerita", "Ceritakan sebuah cerita", "Saran"],
+            "responses": ["Saya akan mencari cerita terbaik untuk kamu..."],
+            "stories": [
+                "Atu Belah",
+                "Pangeran Amat Mude",
+                "Kisah Si Raja Parkit",
+                "Terjadinya Danau Toba",
+                "Putri Ular",
+                "Dayang Bandir dan Sandean Raja",
+                "Malin Kundang",
+                "Si Lebai yang Malang",
+                "Siamang Putih",
+                "Legenda Ikan Patin",
+                "Burung Tempua dan Burung Puyuh",
+                "Putri Mambang Linau",
+                "Si Kelingking",
+                "Ibu Kami Seekor Kucing",
+                "Si Pahit Lidah",
+                "Legenda Pulau Kemaro",
+                "Putri Kemarau",
+                "Legenda Ular Berkepala Tujuh",
+                "Legenda Ular N'Daung",
+                "Asal-usul Batang Aren",
+                "Buaya Perompak",
+                "Si Bungsu",
+                "Sultan Domas",
+                "Bujang Katak",
+                "Si Penyumpit",
+                "Legenda Pulau Sanua",
+                "Putri Pandan Berduri",
+                "Ayam dan Ikan Tongkol",
+                "Murtado Macan Kemayoran",
+                "Si Pitung",
+                "Monyet yang Malas",
+                "Lutung Kasarung",
+                "Sangkuriang & Dayang Sumbi",
+                "Asal Mula Kota Cianjur",
+                "Telaga Warna",
+                "Legenda Gunung Tidar",
+                "Timun Mas",
+                "Cindelaras",
+                "Asal-usul Nama Kali Gajah Wong",
+                "Bawang Putih dan Bawang Merah",
+                "Roro Jonggrang",
+                "Keong Mas",
+                "Calon Arang",
+                "Kisah Lembu Sura",
+                "Terjadinya Selat Bali",
+                "Kebo Iwa",
+                "Asal Mula Bukit Catu",
+                "Sari Bulan",
+                "Batu Golog",
+                "Suri Ikun dan Dua Ekor Burung"
+            ]
+        },
+        {
+            "tag": "credit",
+            "patterns": ["Credits", "Pembuat aplikasi", "Kredit", "Credit", "Siapa yang membuat aplikasi ini?", "Tim pengembang ABA-I", "Pengembang aplikasi"],
+            "responses": [
+                "Credits Pembuatan Aplikasi ABA-I:\nTim Machine Learning:\n- Jason Christopher - Universitas Gunadarma - M009D4KY1942\n- Muslihah - Universitas Jenderal Achmad Yani Yogyakarta - M228D4KX2526\n- Roysihan - Universitas Esa Unggul - M204D4KY2005\nTim Mobile Development:\n- Muhammad Dzulfiqar Rizky Azhary - Universitas Mataram - A253D4KY3428\n- I Gede Restu Astikadeni - Universitas Mataram - A253D4KY4003\nTim Cloud Computing:\n- Ammar Ismail Khocan - Institut Informatika Dan Bisnis Darmajaya - C107D4KY0853\n- Ida Bagus Adi Kencana - Universitas Mataram - C253D4KY0667"
+            ]
+        },
+        {
+            "tag": "help",
+            "patterns": ["Help", "Bantuan", "Tolong", "Apa yang bisa kamu lakukan?", "Apa saja fitur yang tersedia?", "Bisa bantu?", "Bagaimana cara kerja aplikasi ini?"],
+            "responses": [
+                "Kamu dapat bertanya tentang hal-hal berikut:\n- Sapaan: Hi, Halo, Bye, Dadah\n- Ucapan: Terimakasih, Makasih\n- Rekomendasi: Rekomendasikan cerita, Beri saya saran cerita\n- ABA-I: Tentang aplikasi ABA-I, Info ABA-I, Pembuat aplikasi, Kredit\n- Cerita: Mite, Legenda, Sage, Fabel, Jenaka, Parabel, Dongeng biasa"
+            ]
+        },
+        {
+            "tag": "abi",
+            "patterns": ["Tentang aplikasi ABA-I", "Info ABA-I", "Apa itu ABA-I?", "Cerita tentang ABA-I", "Fungsi ABA-I", "Tujuan ABA-I", "Kenapa ada ABA-I?"],
+            "responses": [
+                "ABA-I (Ayo Baca Indonesia) adalah aplikasi yang bertujuan untuk menghidupkan dan melestarikan cerita rakyat Nusantara. Dengan ABA-I, kamu bisa mengeksplorasi kekayaan budaya Indonesia melalui kisah-kisah yang menakjubkan.",
+                "ABA-I, atau Ayo Baca Indonesia, adalah sebuah aplikasi yang dirancang untuk melestarikan cerita rakyat Indonesia. Aplikasi ini memungkinkan kamu menjelajahi berbagai cerita tradisional yang kaya akan nilai budaya.",
+                "ABA-I (Ayo Baca Indonesia) adalah aplikasi yang fokus pada pelestarian dan revitalisasi cerita rakyat Nusantara. Temukan dan nikmati berbagai kisah budaya yang mengagumkan dengan menggunakan ABA-I."
+            ]
+        }
+    ]
+}
