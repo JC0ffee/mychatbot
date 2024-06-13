@@ -1,5 +1,5 @@
 ## Cerita Rakyat Chatbot by Jason
-![Plot](https://github.com/JC0ffee/Chatbots/blob/23c71d7edcc7242d1ba83f45b79182168e0018d0/TrainingandValidationMetrics.png)
+![Plot](https://github.com/JC0ffee/mychatbot/blob/3599f765c835a5438c61fe9eb5c23c99cd4f5274/Chatbots/TrainingandValidationMetrics.png)
 
 ***Output Training***
 ###
