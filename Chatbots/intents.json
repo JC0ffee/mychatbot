@@ -2,7 +2,7 @@
     "intents": [
         {
             "tag": "mite",
-            "patterns": ["mite", "Mite", "Cerita Mite", "Dongeng Mite", "Ada cerita dewa-dewa?", "Ceritakan tentang dewa-dewa"],
+            "patterns": ["Mite", "Cerita Mite", "Dongeng Mite", "Ada cerita dewa-dewa?", "Ceritakan tentang dewa-dewa"],
             "responses": [
                 "Cerita mite adalah dongeng yang bercerita tentang dewa-dewa, peri, dan segala sesuatu yang dianggap sederajat dengan dewa. Misalnya, cerita tentang datangnya padi ke Jawa."
             ]
