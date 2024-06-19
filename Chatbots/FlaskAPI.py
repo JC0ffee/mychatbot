@@ -1,39 +1,29 @@
 from flask import Flask, request, jsonify
-from tensorflow.keras.models import load_model
-import nltk
-from nltk.stem import WordNetLemmatizer
-import numpy as np
 import json
+import nltk
 import random
+import numpy as np
+from nltk.stem import WordNetLemmatizer
+from tensorflow.keras.models import load_model
+import re
 
-# Inisialisasi Flask
-app = Flask(__name__)
+model = load_model('100model.h5')
 
-# Load model dan data
-model = load_model('my100baby.h5')
+with open('intents.json') as file:
+    data = json.load(file)
 
-# Download NLTK data
-nltk.download('punkt')
-nltk.download('wordnet')
-
-# Load intents JSON data
-with open('intents.json') as json_file:
-    intents = json.load(json_file)
-
-# Inisialisasi lemmatizer
 lemmatizer = WordNetLemmatizer()
 
-# Membuat list dari words dan classes
 words = []
 classes = []
-documents = []
 ignore_words = ['?', '!']
 
-for intent in intents['intents']:
+# Prepare the data
+for intent in data['intents']:
     for pattern in intent['patterns']:
-        word_list = nltk.word_tokenize(pattern)
+        clean_pattern = re.sub(r'\n', ' ', pattern)
+        word_list = nltk.word_tokenize(clean_pattern)
         words.extend(word_list)
-        documents.append((word_list, intent['tag']))
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
 
@@ -42,11 +32,12 @@ words = sorted(list(set(words)))
 classes = sorted(list(set(classes)))
 
 def clean_up_sentence(sentence):
-    sentence_words = nltk.word_tokenize(sentence)
+    clean_sentence = re.sub(r'\n', ' ', sentence)
+    sentence_words = nltk.word_tokenize(clean_sentence)
     sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
     return sentence_words
 
-def bow(sentence, words, show_details=False):
+def bow(sentence, words, show_details=True):
     sentence_words = clean_up_sentence(sentence)
     bag = [0] * len(words)
     for s in sentence_words:
@@ -60,7 +51,7 @@ def bow(sentence, words, show_details=False):
 def predict_class(sentence, model):
     p = bow(sentence, words, show_details=False)
     res = model.predict(np.array([p]))[0]
-    ERROR_THRESHOLD = 0.3
+    ERROR_THRESHOLD = 0.2
     results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
     results.sort(key=lambda x: x[1], reverse=True)
     return_list = []
@@ -79,39 +70,45 @@ def get_story_recommendation(intents):
                 return recommended_story
     return "Maaf, tidak ada cerita yang tersedia saat ini."
 
-def get_response(ints, intents_json):
-    if not ints:
-        return "Maaf, saya tidak mengerti. Jika kamu membutuhkan bantuan, kamu bisa menuliskan 'help' atau 'tolong'."
+def welcome_message():
+    return "Selamat datang di aplikasi ABA-I, saya adalah Personal Assistant untuk membantumu menjelajahi aplikasi ini. Bagaimana saya bisa membantu kamu hari ini?"
 
-    tag = ints[0]['intent']
-    list_of_intents = intents_json['intents']
-
-    for intent in list_of_intents:
-        if intent['tag'] == tag:
-            if tag == 'recommendation':
-                recommended_story = get_story_recommendation(intents_json)
-                result = f"Menurutku, cerita yang menarik untuk kamu adalah {recommended_story}."
-            elif tag == 'response_to_greeting':
-                result = random.choice(intent['responses'])
-            else:
-                result = random.choice(intent['responses'])
-            break
+def get_response(ints, intents_json, user_name="", first_session=True):
+    if first_session:
+        response = welcome_message()
     else:
-        result = "Maaf, saya tidak mengerti. Jika kamu membutuhkan bantuan, kamu bisa menuliskan 'help' atau 'tolong'."
+        if not ints:
+            response = "Maaf, saya tidak mengerti. Jika kamu membutuhkan bantuan, kamu bisa menuliskan 'help' atau 'tolong'."
+        else:
+            tag = ints[0]['intent']
+            list_of_intents = intents_json['intents']
+            for intent in list_of_intents:
+                if intent['tag'] == tag:
+                    if tag == 'recommendation':
+                        recommended_story = get_story_recommendation(intents_json)
+                        response = f"Menurutku, cerita yang menarik untuk kamu adalah {recommended_story}."
+                    else:
+                        response = random.choice(intent['responses'])
+                    break
+            else:
+                response = "Maaf, saya tidak mengerti. Jika kamu membutuhkan bantuan, kamu bisa menuliskan 'help' atau 'tolong'."
+    return response
 
-    return result
-
-def chatbot_response(msg):
+def chatbot_response(msg, user_name="", first_session=True):
+    msg = msg.replace('\n', ' ')
     ints = predict_class(msg, model)
-    res = get_response(ints, intents)
+    res = get_response(ints, data, user_name, first_session)
     return res
 
-@app.route('/chatbot', methods=['POST'])
-def chatbot():
-    data = request.get_json()
-    message = data.get('message')
-    response = chatbot_response(message)
-    return jsonify({'response': response})
+app = Flask(__name__)
 
-if __name__ == "__main__":
+@app.route('/chatbot', methods=['POST'])
+def chat():
+    request_data = request.get_json()
+    message = request_data['message']
+    first_session = request_data.get('first_session', True)
+    response = chatbot_response(message, first_session=first_session)
+    return jsonify({"response": response})
+
+if __name__ == '__main__':
     app.run(debug=True)
