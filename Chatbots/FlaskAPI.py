@@ -10,7 +10,7 @@ import random
 app = Flask(__name__)
 
 # Load model dan data
-model = load_model('sexy_model.h5')
+model = load_model('my100baby.h5')
 
 # Download NLTK data
 nltk.download('punkt')
