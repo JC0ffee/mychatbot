@@ -7,12 +7,12 @@ This README provides comprehensive guidelines for implementing and testing the A
 1. [ABA-I CHATBOT ML](#aba-i-chatbot-ml)
    - [Overview](#overview)
    - [Training Metrics](#training-metrics)
-2. [Pembuatan API dengan Flask](#pembuatan-api-dengan-flask)
-   - [Langkah 1: Instalasi Flask](#langkah-1-instalasi-flask)
-   - [Langkah 2: Implementasi API Flask](#langkah-2-implementasi-api-flask)
-   - [Langkah 3: Menjalankan API Flask](#langkah-3-menjalankan-api-flask)
-   - [Langkah 4: Pengujian API dengan Postman](#langkah-4-pengujian-api-dengan-postman)
-3. [Implementasi API Flask pada Aplikasi Android](#implementasi-api-flask-pada-aplikasi-android)
+2. [Creating API with Flask](#creating-api-with-flask)
+   - [Step 1: Installing Flask](#step-1-installing-flask)
+   - [Step 2: Implementing Flask API](#step-2-implementing-flask-api)
+   - [Step 3: Running Flask API](#step-3-running-flask-api)
+   - [Step 4: Testing API with Postman](#step-4-testing-api-with-postman)
+3. [Implementing Flask API in Android Application](#implementing-flask-api-in-android-application)
    - [Setup Retrofit Library](#setup-retrofit-library)
    - [Creating API Interface](#creating-api-interface)
    - [Creating POJO Classes](#creating-pojo-classes)
@@ -39,16 +39,17 @@ The ABA-I Chatbot ML is designed to assist users in navigating an application en
 - **Best Validation Accuracy:**
   - Best Validation Accuracy: 100%
 
-### Pembuatan API dengan Flask
+### Creating API with Flask
 
-#### Langkah 1 : Instalasi Flask
+#### Step 1: Installing Flask
 
-1. Instal Python dari [python.org](https://www.python.org/downloads/)
-2. Instal Flask menggunakan pip (package installer Python)
+1. Install Python from [python.org](https://www.python.org/downloads/).
+2. Install Flask using pip (Python package installer).
 
-#### Langkah 2 : Implementasi API Flask
+#### Step 2: Implementing Flask API
 
-Contoh implementasi API sederhana
+Example of a simple API implementation using Flask:
+
 ```python
 from flask import Flask, jsonify
 
@@ -56,17 +57,19 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
- return "Welcome to my Flask API!"
+    return "Welcome to my Flask API!"
 
 @app.route('/greet/<name>')
 def greet(name):
- return f"Hello, {name}!"
+    return f"Hello, {name}!"
 
 if __name__ == '__main__':
- app.run(debug=True)
+    app.run(debug=True)
  ```
-### Langkah 3 : Menjalankan API Flask
-Buka terminal atau command prompt,arahkan ke direktori tempat kalian menyimpan file 'FlaskAPI.py' lalu menjalankan perintah
+### Step 3: Running Flask API
+
+Open a terminal or command prompt, navigate to the directory where you have saved the 'FlaskAPI.py' file, then execute the command:
+
  ```
  python FlaskAPI.py
   ```
@@ -74,13 +77,13 @@ Output
 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 
 ### Langkah 4 : Pengujian API dengan Postman
-1. Install Postman dari [getpostman.com](https://www.getpostman.com/downloads/)
-2. Buat tab baru pada postman dan pilih metode HTTP (POST)
-3. Masukkan URL Endpoint http://127.0.0.1:5000/chatbot
-4. Tambahkan header 'Content-Type' dengan nilai 'application/json'
-5. Pilih tab 'Body' dengan format 'raw' dan jenis 'JSON'
-6. Masukkan data di area teks dibawah tab Body
-Contoh
+1. Install Postman from [getpostman.com](https://www.getpostman.com/downloads/)
+2. Create a new tab in Postman and select the HTTP method (POST).
+3. Enter the Endpoint URL http://127.0.0.1:5000/chatbot
+4. Add a 'Content-Type' header with the value 'application/json'.
+5. Select the 'Body' tab, choose 'raw' format, and set type to 'JSON'.
+6. Enter data in the text area under the Body tab.
+Example JSON Data:
  ```
 {
     "message": "Halo",
@@ -88,21 +91,21 @@ Contoh
 }
  ```
 
-## Implementasi API Flask pada Aplikasi Android
+## Implementing Flask API in Android Application
 
 ```
    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // Untuk mengonversi JSON response ke objek Java/Gson
    ```
 
-**Buat interface untuk API**
+**Create an interface for API**
 ```public interface ChatbotAPI {
     @POST("chatbot")
     Call<ChatbotResponse> sendMessage(@Body ChatbotRequest request);
 }
 ```
 
-**Buat kelas POJO untuk Request dan Response**
+**Create POJO classes for Request and Response**
 ```public class ChatbotRequest {
     private String message;
     // Constructor, getter, dan setter
@@ -113,7 +116,7 @@ public class ChatbotResponse {
     // Constructor, getter, dan setter
 }
 ```
-**Pengaturan Retrofit dan Koneksi ke API**
+**Setting up Retrofit and Connecting to API**
 ```import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -131,7 +134,7 @@ public class RetrofitClient {
     }
 }
 ```
-**Menggunakan Interface API**
+**Using the API Interface**
 ```
 Retrofit retrofit = RetrofitClient.getClient("http://alamat-ip-flask-anda:port/");
 ChatbotAPI chatbotAPI = retrofit.create(ChatbotAPI.class);
