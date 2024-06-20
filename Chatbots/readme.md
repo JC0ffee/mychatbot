@@ -18,6 +18,7 @@ This README provides comprehensive guidelines for implementing and testing the A
    - [Creating POJO Classes](#creating-pojo-classes)
    - [Setting Up Retrofit Client](#setting-up-retrofit-client)
    - [Using API Interface in Android Application](#using-api-interface-in-android-application)
+4. [Intents JSON File](https://github.com/JC0ffee/mychatbot/blob/main/Chatbots/intents.json)
 
 ### ABA-I CHATBOT ML
 
