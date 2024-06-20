@@ -1,6 +1,6 @@
 ### Introduction
 
-This README provides comprehensive guidelines for implementing and testing the ABA-I Chatbot Machine Learning model through an API built with Flask. It covers setting up the API with Flask, testing it using Postman, and integrating it into an Android application using Retrofit.
+Welcome to the comprehensive guide for implementing and testing the ABA-I Chatbot Machine Learning model. This README provides detailed instructions on setting up, training, and deploying the chatbot using Python, Flask API, and integrating it into an Android application with Retrofit.
 
 ### Table of Contents
 
@@ -25,7 +25,7 @@ This README provides comprehensive guidelines for implementing and testing the A
 ### ABA-I CHATBOT ML
 
 #### Overview
-The ABA-I Chatbot ML is designed to assist users in navigating an application environment using natural language processing. It utilizes a machine learning model trained to recognize intents from user messages and respond accordingly.
+The ABA-I Chatbot ML (Machine Learning) system is engineered to facilitate user interaction within an application environment by leveraging natural language processing (NLP) techniques. This chatbot employs a trained machine learning model capable of identifying various intents conveyed through user messages and formulating appropriate responses.
 
 #### Training Metrics
 ![Training Metrics](https://github.com/JC0ffee/mychatbot/blob/3599f765c835a5438c61fe9eb5c23c99cd4f5274/Chatbots/TrainingandValidationMetrics.png)
