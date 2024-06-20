@@ -192,7 +192,7 @@ Open a terminal or command prompt, navigate to the directory where you have save
 Output
 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 
-### Langkah 4 : Pengujian API dengan Postman
+### Step 4: Testing API with Postman
 1. Install Postman from [getpostman.com](https://www.getpostman.com/downloads/)
 2. Create a new tab in Postman and select the HTTP method (POST).
 3. Enter the Endpoint URL http://127.0.0.1:5000/chatbot
