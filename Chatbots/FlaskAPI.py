@@ -7,7 +7,7 @@ from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import load_model
 import re
 
-model = load_model('100model.h5')
+model = load_model('100chatbotmodel.h5')
 
 with open('intents.json') as file:
     data = json.load(file)
