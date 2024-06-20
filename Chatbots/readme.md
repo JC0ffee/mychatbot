@@ -7,6 +7,8 @@ This README provides comprehensive guidelines for implementing and testing the A
 1. [ABA-I CHATBOT ML](#aba-i-chatbot-ml)
    - [Overview](#overview)
    - [Training Metrics](#training-metrics)
+   - [Intents JSON File](#intents-json-file)
+   - [Training Process](#training-process)
 2. [Creating API with Flask](#creating-api-with-flask)
    - [Step 1: Installing Flask](#step-1-installing-flask)
    - [Step 2: Implementing Flask API](#step-2-implementing-flask-api)
@@ -18,8 +20,7 @@ This README provides comprehensive guidelines for implementing and testing the A
    - [Creating POJO Classes](#creating-pojo-classes)
    - [Setting Up Retrofit Client](#setting-up-retrofit-client)
    - [Using API Interface in Android Application](#using-api-interface-in-android-application)
-4. [Intents JSON File](https://github.com/JC0ffee/mychatbot/blob/main/Chatbots/intents.json)
-
+     
 ### ABA-I CHATBOT ML
 
 #### Overview
@@ -39,6 +40,35 @@ The ABA-I Chatbot ML is designed to assist users in navigating an application en
   
 - **Best Validation Accuracy:**
   - Best Validation Accuracy: 100%
+ 
+### Intents JSON File
+[Intents JSON File](https://github.com/JC0ffee/mychatbot/blob/main/Chatbots/intents.json)
+
+### Training Process
+
+The training process for the ABA-I Chatbot involves several key steps:
+
+1. **Importing Libraries**: Import necessary libraries for NLP and model training, including NLTK for text preprocessing and TensorFlow/Keras for building and training the neural network model.
+
+2. **Loading and Preprocessing Data**:
+    - The `intents.json` file is loaded, containing training data with patterns and corresponding tags.
+    - Words in the patterns are lemmatized (reduced to base form) and stop words (common words like 'the', 'is') are removed to reduce noise.
+    - The text data is tokenized into words, and each word is associated with a tag.
+
+3. **Preparing Training Data**:
+    - A bag-of-words model is used to represent each pattern as a vector. Each vector element corresponds to a word in the vocabulary, with a value of 1 if the word is present in the pattern, and 0 otherwise.
+    - Tags are one-hot encoded to create output vectors.
+
+4. **Building the Neural Network Model**:
+    - A Sequential model is built with dense layers and dropout for regularization.
+    - The model is compiled using the Adam optimizer and categorical cross-entropy loss function.
+
+5. **Training the Model**:
+    - Early stopping and a custom callback are used to save the best model based on validation accuracy.
+    - The model is trained with the training data for up to 1000 epochs, using 10% of the data for validation.
+
+6. **Visualization**:
+    - Training and validation loss and accuracy are plotted to visualize the model's performance over epochs.
 
 ### Creating API with Flask
 
