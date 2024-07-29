@@ -168,18 +168,17 @@ Example of a simple API implementation using Flask:
 ```
 from flask import Flask, jsonify
 
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return "Welcome to my Flask API!"
-
-@app.route('/greet/<name>')
-def greet(name):
-    return f"Hello, {name}!"
+@app.route('/chatbot', methods=['POST'])
+def chat():
+    request_data = request.get_json()
+    message = request_data['message']
+    first_session = request_data.get('first_session', True)
+    response = chatbot_response(message, first_session=first_session)
+    return jsonify({"response": response})
 
 if __name__ == '__main__':
     app.run(debug=True)
+
  ```
 ### Step 3: Running Flask API
 
